@@ -26,3 +26,19 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.avatar {
+  border-radius: 100%;
+}
+
+.card {
+  background: white;
+}
+
+.column {
+  display: flex;
+}
+
+.column > * {
+  width: 33%;
+}

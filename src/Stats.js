@@ -5,6 +5,8 @@ let yearTotal = "";
 let yearRides = 0;
 
 class Stats extends Component {
+  state = {};
+
   setStateAsync(state) {
     return new Promise((resolve) => {
       this.setState(state, resolve)
@@ -15,16 +17,17 @@ class Stats extends Component {
     const res = await fetch(statsUrl)
     const stats = await res.json()
     console.log(stats);
-    yearTotal = stats.biggest_ride_distance;
+    yearTotal = Math.round(stats.ytd_ride_totals.distance / 100) / 10;
     yearRides = stats.ytd_ride_totals.count;
     await this.setStateAsync({stats: stats})
    }
   render() {
     return (
-      <div>
-        <h2>Aantal ritten: {yearRides}</h2>
-        <h2>Totaal aantal KM: {yearTotal}</h2>
-        </div>
+      <div className="card">
+        <h2>This year so far</h2>
+        <div className="total_rides">{yearRides} ritten</div>
+        <div className="total_km">{yearTotal} km</div>
+      </div>
     );
   }
 }
