@@ -19,13 +19,13 @@ class Activities extends Component {
         let activities = data.map((activity) => {
         console.log(activity);
             let rideName = activity.name;
-            let rideDistance = Math.round(activity.distance / 100) / 10;
-        
+            let rideAvg = activity.average_speed * 3.6000000;
         return (
           <div key={rideName + activity.start_date}>
             <h2>{rideName}</h2>
             <h3>{activity.start_date}</h3>
-            <span>Distance: {rideDistance} KM</span>
+            <div>Distance: {Math.round(activity.distance / 100) / 10} KM</div>
+            <div>Average: {(rideAvg * 100) / 100  }</div>
           </div>
         )
       })
@@ -35,7 +35,7 @@ class Activities extends Component {
     render() {
       return (
         <div className="Activities">
-          <h1>5 latest activities</h1>
+          <h2>5 latest activities</h2>
           {this.state.activities}
         </div>
       );
