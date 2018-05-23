@@ -42,3 +42,22 @@
 .column > * {
   width: 33%;
 }
+
+.icons-container {
+  display: flex;
+  justify-content: space-around;
+} 
+
+.icon {
+  padding: 1em;
+  background: black;
+  color: white;
+}
+
+.activity {
+  background: white;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
+}

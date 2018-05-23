@@ -15,4 +15,5 @@ This react App shows a overview of some ride statistics data by using the Strava
 ### Detailpages
 * Show user profile in detail
 * Show activity in detail
+* Show segments
 
