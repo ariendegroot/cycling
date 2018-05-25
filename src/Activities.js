@@ -26,23 +26,23 @@ class Activities extends Component {
             let rideUrl = "https://www.strava.com/activities/" + activity.id;
         return (
           <div class="activity" key={ rideName + activity.start_date }>
-            <a href={ rideUrl }>{ rideDay + " " + rideName }</a>
+            <a href={rideUrl}>{rideDay+" "+rideName}</a>
             <div className="icons-container">
-              <span className="icon">{ Math.round(activity.distance / 100) / 10 }</span>
-              <span className="icon">{ Math.round(rideAvg) }</span>
-              <span className="icon">{ activity.kudos_count }</span>
+              <span className="icon">{Math.round(activity.distance / 100) / 10}</span>
+              <span className="icon">{Math.round(rideAvg)}</span>
+              <span className="icon">{activity.kudos_count}</span>
             </div>
           </div>
         )
       })
-      this.setState( {activities: activities });
+      this.setState({activities: activities});
     })
   }
     render() {
       return (
         <div className="Activities">
           <h2>Recent rides</h2>
-          { this.state.activities }
+          {this.state.activities}
         </div>
       );
     }
