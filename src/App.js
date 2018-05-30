@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Activities from './Activities';
+import ActivityDetail from './ActivityDetail';
 import Stats from './Stats';
 import User from './User';
 import Weather from './Weather';
@@ -14,8 +15,11 @@ class App extends Component {
         <div className="column">
           <User />
           <Stats />
-          <Activities />
           <Weather />
+        </div>
+        <div className="column">  
+          <Activities />
+          <ActivityDetail />
         </div>
       </div>
     );
