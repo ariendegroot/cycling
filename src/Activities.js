@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import ActivityDetail from './ActivityDetail';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const activitiesUrl = "https://www.strava.com/api/v3/athlete/activities?per_page=5&access_token=93b40912b9be56c8c6d9fbd524ba793ea409ff6a";
-const activitieDetailUrl = "https://www.strava.com/api/v3/activities/1604487088?include_all_efforts=true&access_token=93b40912b9be56c8c6d9fbd524ba793ea409ff6a";
 
 class Activities extends Component {
     constructor() {
@@ -23,10 +24,10 @@ class Activities extends Component {
             let rideDate = new Date(activity.start_date);
             let dateOptions = { weekday: undefined, year: undefined, month: 'long', day: 'numeric' };
             let rideDay = rideDate.toLocaleDateString('nl-NL', dateOptions );
-            let rideUrl = "https://www.strava.com/activities/" + activity.id;
+            let rideUrl = "/detail/" + activity.id;
         return (
           <div class="activity" key={ activity.name + activity.start_date }>
-            <a href={rideUrl}>{rideDay+" "+activity.name}</a>
+            <Link to={rideUrl}>{rideDay+" "+activity.name}</Link>
             <div className="icons-container">
               <span className="icon">{Math.round(activity.distance / 100) / 10}</span>
               <span className="icon">{Math.round(rideAvg)}</span>
@@ -40,10 +41,15 @@ class Activities extends Component {
   }
     render() {
       return (
-        <div className="Activities">
-          <h2>Recent rides</h2>
-          {this.state.activities}
-        </div>
+        <div className="activities">
+          <div className="overview">
+            <h2>Recent rides</h2>
+            {this.state.activities}
+          </div>
+          <div className="detail">
+             <Route path="/detail/:activityId" component={ActivityDetail} />
+          </div>
+        </div>        
       );
     }
   }
